@@ -1,0 +1,67 @@
+{% extends 'userapp.html' %}
+{% block content %}
+
+        <div class="row g-4 mb-5">
+
+  
+
+            <center>
+           
+                <div class="col-lg-8 col-xl-9">
+                    <div class="row g-4">
+                        {% for i in data %}
+                        <form action="{% url 'cartdata' i.id %}" method="post">
+                            {% csrf_token %}
+                        <div class="col-lg-6">
+                            <div class="border rounded">
+                                <a href="#">
+                                    <img src="{{i.image.url}}"  style="height: 400px;width: 400px;" class="img-fluid rounded" alt="Image">
+                                </a>
+                            </div>
+                        
+                
+                            <h4 class="fw-bold mb-3" style="color: black;">{{i.name}}</h4>
+                            <h4 class="fw-bold mb-3">{{i.price}}</h4>
+                            <p class="mb-3">{{i.category}}</p>
+                            <h5 class="fw-bold mb-3">{{i.features}}</h5>
+                            
+                           
+                                
+                           <input type="number" id="quantity" name="quantity" value="1" min="1" max="100">
+                           <input type="hidden" id="price" value="{{i.price}}">
+                           <input type="text" id="total" name="total" value="{{i.price}}">
+                           <a href="#" class="cart-btn"><button type="submit">Add to Cart</button></a>
+                        
+                        
+                    
+                        </div>
+                    </form>
+                        {% endfor %}
+                    </div>
+                  
+                       
+          
+                </div>
+               
+          
+            </center>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $('#quantity').on('change', function(){
+                var quantity=$('#quantity').val();
+                var price=$('#price').val();
+                var total=parseInt(quantity)*parseInt(price);
+                $('#total').val(total);
+            })
+        })
+    </script>
+         
+        </div>
+          
+        {% endblock %}

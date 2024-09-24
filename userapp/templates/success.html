@@ -1,0 +1,39 @@
+{% extends 'userapp.html' %}
+{% block content %}
+<div class="row"> 
+    {% for i in data %}
+<div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="rounded position-relative fruite-item">
+        <div class="fruite-img">
+            <img src="{{i.checkoutcart.cartproduct.image.url}}" style="height: 350px;width: 400px;" class="img-fluid w-100 rounded-top" alt="">
+        </div>
+        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+            <h4>{{i.usercheckout.username}}</h4>
+            <h4>{{i.usercheckout.email}}</h4>
+            <h4>{{i.usercheckout.phonenumber}}</h4>
+            <h4>{{i.checkoutcart.cartproduct.name}}</h4>
+            <h4>{{i.checkoutcart.quantity}}</h4>
+            <h4>{{i.checkoutcart.total}}</h4>
+
+
+
+
+
+
+
+
+           
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+<br>
+<center>
+<h4>for continue shopping</h4>
+<a href="{% url 'productcard' category='all' %}"><button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">go back</button>
+</center>
+
+</div>
+{% endblock %}

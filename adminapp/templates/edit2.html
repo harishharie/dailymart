@@ -1,0 +1,44 @@
+{% extends 'adminapp.html' %}
+{% block content %}
+{% for i in data %}
+<form action="{% url 'update2' id=i.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">product name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="{{i.name}}" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">product image</label>
+        <input type="file" class="form-control" id="exampleInputPassword1" name="image" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">product price</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" name="price" value="{{i.price}}" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Choose Product category</label>
+        <select name="category">
+          {% for i in data2 %}
+          <option>{{i.name}}</option>
+          {% endfor %}
+        </select>
+  
+      </div>
+
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">product features</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="features" value="{{i.features}}" placeholder="Enter email">
+      </div>
+      
+     
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+{% endfor %}  
+{% endblock %}

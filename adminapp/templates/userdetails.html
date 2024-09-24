@@ -1,0 +1,64 @@
+{% extends "adminapp.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Responsive Hover Table</h3>
+
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+              <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+          {% for i in data %} 
+          <table class="table table-hover text-nowrap">
+        
+            <thead>
+              <tr>
+                <th>username</th>
+                <th>password</th>
+                <th>email</th>
+                <th>product image</th>
+                <th>product name</th>
+                <th>quantity</th>
+                <th>price</th>
+                <th>total</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>{{i.usercheckout.username}}</td>
+                <td>{{i.usercheckout.password}}</td>
+                <td>{{i.usercheckout.email}}</td>
+                <td><img src="{{i.checkoutcart.cartproduct.image.url}}"  height="100px" width="100px"></td>
+                <td>{{i.checkoutcart.cartproduct.name}}</td>
+                <td>{{i.checkoutcart.quantity}}</td>
+                <td>{{i.checkoutcart.cartproduct.price}}</td>
+                <td>{{i.checkoutcart.total}}</td>
+              </tr>
+              
+              
+            </tbody>
+          </table>
+          {% endfor %}
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+</div>
+{% endblock %}
